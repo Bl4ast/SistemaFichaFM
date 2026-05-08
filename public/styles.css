@@ -1,0 +1,354 @@
+/* --- VARIÁVEIS DO SISTEMA --- */
+:root {
+    --color-cursed: #7c3aed;
+    --color-cursed-dark: #5b21b6;
+    --font-main: 'Poppins', sans-serif;
+    --cyan-glow: rgba(0, 255, 255, 0.8);
+}
+
+/* --- ESTILOS GERAIS E SCOPE --- */
+body {
+    background-color: #020617;
+    color: #e2e8f0;
+    font-family: var(--font-main);
+    transition: background-color 0.5s ease, color 0.5s ease, font-family 0.3s ease;
+    position: relative; 
+}
+
+.content-wrapper { 
+    position: relative; 
+    z-index: 10; 
+}
+
+/* --- SCROLLBAR CUSTOMIZADA --- */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-cursed); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-cursed-dark); }
+
+/* --- INPUTS --- */
+input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
+input[type="number"] { -moz-appearance: textfield; }
+
+.input-field { 
+    background-color: #0f172a; 
+    border: 1px solid #334155; 
+    border-radius: 0.375rem; 
+    padding: 0.5rem; 
+    color: white; 
+    width: 100%; 
+    transition: all 0.3s ease; 
+    font-family: var(--font-main); 
+}
+.input-field:focus { 
+    outline: none; 
+    border-color: var(--color-cursed); 
+    box-shadow: 0 0 5px var(--color-cursed-dark); 
+}
+
+/* --- ATRIBUTOS E BADGES --- */
+.stat-circle { 
+    width: 70px; 
+    height: 70px; 
+    border-radius: 50%; 
+    border: 3px solid var(--color-cursed); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 1.5rem; 
+    font-weight: bold; 
+    background: #1e293b; 
+    transition: all 0.3s ease; 
+    font-family: var(--font-main);
+}
+.mod-badge { 
+    position: absolute; 
+    bottom: -5px; 
+    right: -5px; 
+    background-color: var(--color-cursed); 
+    color: white; 
+    border-radius: 9999px; 
+    width: 28px; 
+    height: 28px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-weight: bold; 
+    font-size: 0.8rem; 
+    border: 2px solid #1e293b; 
+    transition: all 0.3s ease; 
+}
+
+/* --- COMPONENTES DE ABAS --- */
+.tab-btn { 
+    padding: 0.5rem 1.5rem; 
+    font-weight: bold; 
+    border-radius: 0.5rem 0.5rem 0 0; 
+    transition: all 0.3s ease; 
+    border: 1px solid transparent; 
+    border-bottom: none; 
+    position: relative; 
+    z-index: 10; 
+    font-family: var(--font-main);
+}
+.tab-active { 
+    background-color: #1e293b; 
+    color: var(--color-cursed); 
+    border-color: #334155; 
+}
+.tab-inactive { 
+    background-color: #0f172a; 
+    color: #64748b; 
+}
+.tab-inactive:hover { 
+    color: #e2e8f0; 
+    background-color: #1e293b; 
+}
+
+/* --- COMPONENTES ESPECIAIS --- */
+.grimoire-section { 
+    background: rgba(0,0,0,0.2); 
+    border-radius: 8px; 
+    margin-bottom: 15px; 
+}
+.crafter-box { 
+    background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(6,8,15,0.95)); 
+    border: 1px solid var(--color-cursed); 
+    box-shadow: 0 0 30px rgba(124, 58, 237, 0.1); 
+    overflow: hidden; 
+}
+
+/* Checkbox Mágico */
+.magic-checkbox-wrapper { 
+    cursor: pointer; 
+    display: flex; 
+    align-items: flex-start; 
+    gap: 12px; 
+    padding: 10px; 
+    border-radius: 6px; 
+    transition: all 0.3s ease; 
+    border: 1px solid transparent; 
+    background: rgba(255,255,255,0.02);
+}
+.magic-checkbox-wrapper:hover { 
+    background: rgba(255,255,255,0.05); 
+    border-color: rgba(255,255,255,0.1); 
+    transform: translateX(2px);
+}
+
+.magic-box { 
+    width: 20px; 
+    height: 20px; 
+    border-radius: 4px; 
+    border: 2px solid #475569; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    flex-shrink: 0;
+    transition: all 0.3s ease; 
+    margin-top: 2px; 
+    position: relative; 
+    background: #0f172a;
+}
+.magic-checkbox:checked + .magic-box { 
+    border-color: var(--color-cursed); 
+    background: rgba(124, 58, 237, 0.2);
+    box-shadow: 0 0 10px var(--color-cursed);
+}
+.magic-checkbox:checked + .magic-box::after {
+    content: '\f00c'; 
+    font-family: 'Font Awesome 6 Free'; 
+    font-weight: 900;
+    color: var(--color-cursed); 
+    font-size: 12px; 
+    text-shadow: 0 0 5px var(--color-cursed);
+}
+
+details > summary { list-style: none; }
+details > summary::-webkit-details-marker { display: none; }
+details[open] .details-arrow { 
+    transform: rotate(180deg); 
+    color: var(--color-cursed); 
+}
+
+/* Botões do Topo */
+#btn-modo-batalha { 
+    transition: all 0.4s; 
+    background-color: #1a2235; 
+    border-color: #00ffff; 
+    color: #00ffff; 
+    box-shadow: 0 0 5px rgba(0,255,255,0.3); 
+    border-width: 1px; 
+}
+#btn-modo-batalha:hover { 
+    background-color: #00ffff; 
+    color: #000; 
+}
+
+#btn-modo-serio { 
+    transition: all 0.4s; 
+    background-color: transparent; 
+    border: 1px solid #cbd5e1; 
+    color: #cbd5e1; 
+    font-family: 'Cinzel', serif;
+}
+#btn-modo-serio:hover { 
+    background-color: rgba(0, 255, 255, 0.1); 
+    color: #00ffff; 
+    border-color: #00ffff; 
+    box-shadow: 0 0 15px rgba(0,255,255,0.3); 
+}
+.modo-serio-on { 
+    background-color: rgba(0, 255, 255, 0.15) !important; 
+    color: #00ffff !important; 
+    font-weight: bold; 
+    box-shadow: 0 0 20px rgba(0,255,255,0.4), inset 0 0 10px rgba(0,255,255,0.2) !important; 
+    border-color: #00ffff !important; 
+    text-shadow: 0 0 5px #00ffff;
+}
+
+/* ================= THEME PRESSETS ================= */
+
+/* --- TEMA VINTEUM (Tech / Neon) --- */
+.tema-vinteum { background-color: #05080e; font-family: 'Poppins', sans-serif; }
+.tema-vinteum #hex-background { opacity: 1; }
+.tema-vinteum .bg-cardBg { background-color: rgba(16, 22, 34, 0.85) !important; backdrop-filter: blur(4px); border: 1px solid #00ffff !important; box-shadow: 0 0 12px rgba(0, 255, 255, 0.2); }
+.tema-vinteum .bg-slate-800 { background-color: rgba(22, 32, 48, 0.9) !important; border-color: #008b8b !important; }
+.tema-vinteum .bg-slate-900, .tema-vinteum .input-field { background-color: rgba(8, 12, 18, 0.9) !important; color: #e0f7fa !important; border-color: #008b8b !important; }
+.tema-vinteum .border-slate-700 { border-color: #008b8b !important; }
+.tema-vinteum .text-cursed { color: #00ffff !important; text-shadow: 0 0 5px rgba(0,255,255,0.5); }
+.tema-vinteum [class*="text-"][class*="-400"] { color: #f5c542 !important; }
+.tema-vinteum .bg-cursed { background-color: #00ffff !important; color: #000 !important; font-weight: bold; box-shadow: 0 0 8px #00ffff;}
+.tema-vinteum .stat-circle { border-color: #00ffff !important; background-color: rgba(16, 22, 34, 0.9) !important; color: #fff !important; }
+.tema-vinteum .mod-badge { background-color: #f5c542 !important; color: #000 !important; border-color: #101622 !important; }
+.tema-vinteum .tab-active { background-color: rgba(16, 22, 34, 0.9) !important; border-color: #00ffff !important; color: #00ffff !important; }
+.tema-vinteum .tab-inactive { background-color: rgba(8, 12, 18, 0.8) !important; color: #5a8e8e !important; }
+
+/* MODO BATALHA (VINTEUM) - Vermelho */
+.tema-vinteum.modo-batalha { background-color: #050000; color: #ffffff; }
+.tema-vinteum.modo-batalha #hex-background { opacity: 0; }
+.tema-vinteum.modo-batalha .bg-cardBg { background-color: rgba(10, 0, 0, 0.9) !important; border-color: #ff003c !important; box-shadow: 0 0 20px rgba(255, 0, 60, 0.2); }
+.tema-vinteum.modo-batalha .bg-slate-800 { background-color: #120202 !important; border-color: #88001c !important; }
+.tema-vinteum.modo-batalha .bg-slate-900, .tema-vinteum.modo-batalha .input-field { background-color: #000000 !important; border-color: #550014 !important; color: #ffffff !important; }
+.tema-vinteum.modo-batalha .text-cursed, .tema-vinteum.modo-batalha [class*="text-"][class*="-400"] { color: #ff003c !important; text-shadow: 0 0 8px rgba(255,0,60,0.6); }
+.tema-vinteum.modo-batalha .bg-cursed { background-color: #ff003c !important; color: #fff !important; box-shadow: 0 0 10px #ff003c; border: none !important;}
+.tema-vinteum.modo-batalha .stat-circle { border-color: #ff003c !important; background-color: #050000 !important; color: #fff !important; }
+.tema-vinteum.modo-batalha .mod-badge { background-color: #ffffff !important; color: #ff003c !important; border-color: #000 !important; }
+.tema-vinteum.modo-batalha .tab-active { background-color: #0a0000 !important; border-color: #ff003c !important; color: #ff003c !important; }
+
+/* --- TEMA ZOLTRAAK (Frieren) --- */
+.tema-zoltraak { background-color: #07090f; font-family: 'Poppins', sans-serif; color: #f1f5f9; }
+#magic-circle-bg { 
+    position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+    width: 150vw; height: 150vw; max-width: 1200px; max-height: 1200px; 
+    pointer-events: none; z-index: -1; opacity: 0; transition: opacity 1s ease; 
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500'%3E%3Cg fill='none' stroke='%23a78bfa' stroke-width='1.5' opacity='0.15'%3E%3Ccircle cx='250' cy='250' r='240'/%3E%3Ccircle cx='250' cy='250' r='220'/%3E%3Ccircle cx='250' cy='250' r='150'/%3E%3Cpolygon points='250,30 440,360 60,360'/%3E%3Cpolygon points='250,470 60,140 440,140'/%3E%3Ccircle cx='250' cy='70' r='30'/%3E%3Ccircle cx='95' cy='335' r='30'/%3E%3Ccircle cx='405' cy='335' r='30'/%3E%3C/g%3E%3C/svg%3E"); 
+    background-repeat: no-repeat; background-position: center; background-size: contain; 
+}
+.tema-zoltraak #magic-circle-bg { opacity: 1; animation: spin-slow 120s linear infinite; }
+
+.tema-zoltraak .bg-cardBg { background-color: rgba(13, 17, 30, 0.85) !important; backdrop-filter: blur(8px); border: 1px solid rgba(139, 92, 246, 0.2) !important; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); }
+.tema-zoltraak .bg-slate-800 { background-color: rgba(22, 28, 45, 0.6) !important; border-color: rgba(139, 92, 246, 0.15) !important; }
+.tema-zoltraak .bg-slate-900, .tema-zoltraak .input-field { background-color: rgba(6, 8, 15, 0.8) !important; color: #f8fafc !important; border-color: rgba(139, 92, 246, 0.3) !important; }
+.tema-zoltraak .input-field:focus { border-color: #a78bfa !important; box-shadow: 0 0 10px rgba(167, 139, 250, 0.3); }
+.tema-zoltraak .border-slate-700 { border-color: rgba(139, 92, 246, 0.2) !important; }
+.tema-zoltraak .text-cursed { color: #d8b4fe !important; text-shadow: 0 0 8px rgba(167,139,250,0.5); font-family: 'Cinzel', serif;} 
+.tema-zoltraak [class*="text-"][class*="-400"] { color: #a78bfa !important; font-family: 'Cinzel', serif;} 
+.tema-zoltraak .text-slate-400 { color: #94a3b8 !important; }
+.tema-zoltraak .bg-cursed { background-color: #8b5cf6 !important; color: #fff !important; box-shadow: 0 0 15px rgba(139, 92, 246, 0.4); border: 1px solid #a78bfa;}
+.tema-zoltraak .bg-cursed:hover { background-color: #a78bfa !important; box-shadow: 0 0 20px rgba(167, 139, 250, 0.6); }
+.tema-zoltraak .stat-circle { border-color: #8b5cf6 !important; background-color: rgba(6, 8, 15, 0.9) !important; color: #fff !important; box-shadow: inset 0 0 15px rgba(139, 92, 246, 0.2); }
+.tema-zoltraak .mod-badge { background-color: #a78bfa !important; color: #2e1065 !important; border-color: #06080f !important; }
+.tema-zoltraak .tab-active { background-color: rgba(13, 17, 30, 0.9) !important; border-color: #8b5cf6 !important; color: #d8b4fe !important; text-shadow: 0 0 8px rgba(167,139,250,0.4); font-family: 'Cinzel', serif; font-weight: bold;}
+.tema-zoltraak .tab-inactive { background-color: rgba(6, 8, 15, 0.6) !important; color: #6d28d9 !important; font-family: 'Cinzel', serif;}
+.tema-zoltraak .avatar-container { border-radius: 50% !important; border: 3px solid #8b5cf6 !important; box-shadow: 0 0 20px rgba(139, 92, 246, 0.3), inset 0 0 20px rgba(139, 92, 246, 0.3) !important; }
+
+/* --- MODO SÉRIO (Ciano) --- */
+body.modo-serio-ativo .stat-circle { border-color: #00ffff !important; box-shadow: 0 0 20px var(--cyan-glow), inset 0 0 15px var(--cyan-glow) !important; color: #00ffff !important; text-shadow: 0 0 8px #00ffff;}
+body.modo-serio-ativo .bg-cardBg { border-color: rgba(0, 255, 255, 0.5) !important; box-shadow: 0 0 30px rgba(0, 255, 255, 0.15) !important; }
+body.modo-serio-ativo .avatar-container { border-color: #00ffff !important; box-shadow: 0 0 30px rgba(0, 255, 255, 0.5), inset 0 0 20px rgba(0, 255, 255, 0.3) !important; }
+body.modo-serio-ativo .tab-active { border-color: #00ffff !important; color: #00ffff !important; text-shadow: 0 0 10px #00ffff;}
+body.modo-serio-ativo .bg-cursed { background-color: #00ffff !important; color: #000 !important; box-shadow: 0 0 20px #00ffff; border-color: #fff !important;}
+body.modo-serio-ativo .text-cursed { color: #00ffff !important; text-shadow: 0 0 10px #00ffff; }
+
+body.modo-serio-ativo .magic-checkbox:checked + .magic-box { border-color: #00ffff; background: rgba(0, 255, 255, 0.2); box-shadow: 0 0 10px #00ffff;}
+body.modo-serio-ativo .magic-checkbox:checked + .magic-box::after { color: #00ffff; text-shadow: 0 0 5px #00ffff;}
+
+/* ================= BACKGROUNDS ANIMADOS E PARTÍCULAS ================= */
+
+/* Fundo Hexagonal */
+#hex-background {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    pointer-events: none; z-index: -1; opacity: 0; 
+    transition: opacity 0.5s ease;
+    background-image: 
+        linear-gradient(rgba(10, 16, 25, 0.8), rgba(10, 16, 25, 0.9)),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l25.98 15v30L30 60 4.02 45V15z' stroke-width='1' stroke='%2300ffff' fill='none' fill-rule='evenodd' opacity='0.1'/%3E%3C/svg%3E");
+}
+
+/* Partículas Azuis */
+#aura-azul-container { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 0; overflow: hidden; display: none; }
+body.modo-serio-ativo #aura-azul-container { display: block; }
+.particula-azul { position: absolute; background-color: #00ffff; border-radius: 50%; box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff; opacity: 0; animation: float-up linear infinite; z-index: 0; filter: blur(1px);}
+
+/* Pétalas - Modo Batalha Vinteum */
+#petal-container { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 0; overflow: hidden; display: none; }
+.tema-vinteum.modo-batalha #petal-container { display: block; }
+.petal { position: absolute; background-color: #ff003c; border-radius: 15% 85% 15% 85% / 15% 85% 15% 85%; width: 12px; height: 12px; box-shadow: 0 0 8px #ff003c; opacity: 0; animation: fall linear infinite; z-index: 0; }
+
+/* ================= ANIMAÇÕES ================= */
+@keyframes spin-slow { 
+    100% { transform: translate(-50%, -50%) rotate(360deg); } 
+}
+@keyframes spin-slow-magic { 
+    100% { transform: rotate(360deg) scale(1.2); } 
+}
+@keyframes pulse-magic { 
+    0% { opacity: 0.1; } 50% { opacity: 0.4; } 100% { opacity: 0.1; } 
+}
+@keyframes pulse-save { 
+    0% { opacity: 0.3; } 50% { opacity: 1; } 100% { opacity: 0.3; } 
+}
+@keyframes float-up { 
+    0% { transform: translateY(110vh) scale(0.2); opacity: 0; } 
+    20% { opacity: 0.8; } 
+    80% { opacity: 0.6; } 
+    100% { transform: translateY(-10vh) scale(1.5); opacity: 0; } 
+}
+@keyframes fall { 
+    0% { transform: translate(0, -10vh) rotate(0deg) scale(0.5); opacity: 0; } 
+    10% { opacity: 0.8; } 
+    90% { opacity: 0.8; } 
+    100% { transform: translate(10vw, 110vh) rotate(360deg) scale(1.2); opacity: 0; } 
+}
+@keyframes magic-flash {
+    0% { box-shadow: 0 0 0 rgba(167, 139, 250, 0); border-color: rgba(167, 139, 250, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(167, 139, 250, 0.8); border-color: #fff; }
+    100% { box-shadow: 0 0 0 rgba(167, 139, 250, 0); border-color: rgba(167, 139, 250, 0.3); }
+}
+@keyframes magic-flash-cyan {
+    0% { box-shadow: 0 0 0 rgba(0, 255, 255, 0); border-color: rgba(0, 255, 255, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(0, 255, 255, 0.8); border-color: #fff; }
+    100% { box-shadow: 0 0 0 rgba(0, 255, 255, 0); border-color: rgba(0, 255, 255, 0.3); }
+}
+
+.animate-spin-slow {
+    animation: spin-slow 15s linear infinite;
+}
+.dynamic-magic-circle { 
+    animation: spin-slow-magic 40s linear infinite; 
+    mix-blend-mode: screen; 
+}
+.saving-indicator { 
+    animation: pulse-save 1.5s infinite; 
+}
+.flash-magic { 
+    animation: magic-flash 1s ease-out; 
+}
+body.modo-serio-ativo .flash-magic { 
+    animation: magic-flash-cyan 1s ease-out; 
+}
