@@ -9,8 +9,8 @@ const ALLOWED_ORIGINS = [
   // Coloque aqui seu(s) domínio(s) autorizado(s)
   // Exemplo: "https://meu-site.vercel.app"
   // Deixe vazio para bloquear todas as origens não listadas
+  "https://feiticeiros-maldicoes.vercel.app",
   "https://fichafm-b8e8xvn1f-bl4asts-projects.vercel.app/",
-  "https://bl4ast.vercel.app",
 ];
 
 // ─── BANCO DE DADOS: GRIMÓRIO DE SÍMBOLOS ────────────────────
@@ -260,35 +260,14 @@ const periciasBase = [
 
 // ─── HANDLER DA API ───────────────────────────────────────────
 export default function handler(req, res) {
-  const origin = req.headers.origin || req.headers.referer || '';
-
-  // Verificação de origem — permite apenas domínios listados
-  const isAllowed = ALLOWED_ORIGINS.some(allowed => origin.startsWith(allowed));
-
-  // CORS Headers
-  if (isAllowed) {
-    res.setHeader('Access-Control-Allow-Origin', origin);
-  } else {
-    res.setHeader('Access-Control-Allow-Origin', 'null');
-  }
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  res.setHeader('Cache-Control', 'no-store');
 
-  // Preflight
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
 
-  // Bloquear origens não autorizadas
-  if (!isAllowed) {
-    return res.status(403).json({
-      error: 'Acesso não autorizado.',
-      message: 'Este conteúdo pertence a Feiticeiros & Maldições Bl4ast. Acesso direto não permitido.',
-    });
-  }
-
-  // Retornar todos os dados necessários para o front-end
   return res.status(200).json({
     bdGrimorio,
     classesRPG,
