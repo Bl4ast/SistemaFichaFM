@@ -108,11 +108,56 @@ const bdGrimorio = {
         { id: 'm_ligaca', sub: 'Efeitos Especiais', nome: 'Ligação Mental', desc: 'Enxerga/sente através da magia.' }
     ],
     gatilhos: [
-        /* ... TODOS OS SEUS GATILHOS (Incluí todos os 50 que você mandou) ... */
-        { id: 'g_impact', sub: 'Físicos e Mecânicos', nome: 'Impacto/Pancada', desc: 'Ativa quando o objeto bate forte em algo.' },
-        { id: 'g_fricca', sub: 'Físicos e Mecânicos', nome: 'Fricção', desc: 'Ativa ao esfregar o objeto.' },
-        { id: 'g_quebra', sub: 'Físicos e Mecânicos', nome: 'Quebra/Rompimento', desc: 'A magia explode se o objeto for destruído.' },
-        /* ... (Continue a lista com todos os itens do seu código original aqui) ... */
+        { id: 'g_impact', sub: 'Físicos e Mecânicos', nome: 'Impacto/Pancada', desc: 'Ativa quando o objeto bate forte em algo (pontas de flecha).' },
+        { id: 'g_fricca', sub: 'Físicos e Mecânicos', nome: 'Fricção', desc: 'Ativa ao esfregar o objeto (riscar ou girar anel).' },
+        { id: 'g_quebra', sub: 'Físicos e Mecânicos', nome: 'Quebra/Rompimento', desc: 'A magia fica guardada e explode se o objeto for destruído.' },
+        { id: 'g_tensao', sub: 'Físicos e Mecânicos', nome: 'Tensão', desc: 'Liga quando algo é esticado (ex: corda do arco).' },
+        { id: 'g_abertu', sub: 'Físicos e Mecânicos', nome: 'Abertura', desc: 'Desperta quando porta, livro ou baú é aberto.' },
+        { id: 'g_fecham', sub: 'Físicos e Mecânicos', nome: 'Fechamento', desc: 'O inverso; liga assim que a tampa se fecha.' },
+        { id: 'g_rotaca', sub: 'Físicos e Mecânicos', nome: 'Rotação', desc: 'Ativa ao girar o objeto (maçaneta ou tampa).' },
+        { id: 'g_queliv', sub: 'Físicos e Mecânicos', nome: 'Queda Livre', desc: 'Sensor liga assim que perde contato com o chão/mão.' },
+        { id: 'g_imersa', sub: 'Físicos e Mecânicos', nome: 'Imersão', desc: 'Só funciona quando afunda totalmente na água.' },
+        { id: 'g_perfur', sub: 'Físicos e Mecânicos', nome: 'Perfuração', desc: 'Ativa no exato momento em que fura a pele/armadura.' },
+        { id: 'g_senha',  sub: 'Interação Pessoal (Biometria)', nome: 'Senha Falada', desc: 'Só ativa se ouvir uma palavra específica.' },
+        { id: 'g_sopro',  sub: 'Interação Pessoal (Biometria)', nome: 'Sopro/Vento', desc: 'Liga quando você sopra diretamente sobre a runa.' },
+        { id: 'g_toque',  sub: 'Interação Pessoal (Biometria)', nome: 'Toque de Pele', desc: 'Precisa de contato direto com pele nua.' },
+        { id: 'g_inmana', sub: 'Interação Pessoal (Biometria)', nome: 'Injeção de Mana', desc: 'Exige um "choquinho" da sua energia para ligar.' },
+        { id: 'g_assina', sub: 'Interação Pessoal (Biometria)', nome: 'Assinatura', desc: 'Impressão digital; recusa funcionar para outros.' },
+        { id: 'g_aperto', sub: 'Interação Pessoal (Biometria)', nome: 'Aperto Firme', desc: 'Ativa se esmagado ou segurado com muita força.' },
+        { id: 'g_focvis', sub: 'Interação Pessoal (Biometria)', nome: 'Foco Visual', desc: 'Desenhado em óculos; ativa ao piscar/focar.' },
+        { id: 'g_gotasn', sub: 'Interação Pessoal (Biometria)', nome: 'Gota de Sangue', desc: 'Exige sacrifício; o selo liga ao furar o dedo.' },
+        { id: 'g_ritmoc', sub: 'Interação Pessoal (Biometria)', nome: 'Ritmo Cardíaco', desc: 'Lê o pulso. Pode ativar no susto (pulso rápido).' },
+        { id: 'g_assobi', sub: 'Interação Pessoal (Biometria)', nome: 'Assobio/Estalo', desc: 'Ativa com um som agudo específico gerado por você.' },
+        { id: 'g_proxim', sub: 'Sensores Ambientais', nome: 'Proximidade', desc: 'Radar invisível. Ativa a menos de 3 metros.' },
+        { id: 'g_luzsol', sub: 'Sensores Ambientais', nome: 'Luz Solar', desc: 'A magia "acorda" assim que o sol bate direto.' },
+        { id: 'g_escuri', sub: 'Sensores Ambientais', nome: 'Escuridão Total', desc: 'Só funciona quando não há fonte de luz perto.' },
+        { id: 'g_mudtem', sub: 'Sensores Ambientais', nome: 'Mudança de Temp.', desc: 'Ativa se o local ficar subitamente muito quente/frio.' },
+        { id: 'g_sensfm', sub: 'Sensores Ambientais', nome: 'Sensor de Fumaça', desc: 'Liga automaticamente se detectar toxinas no ar.' },
+        { id: 'g_conmet', sub: 'Sensores Ambientais', nome: 'Contato Metálico', desc: 'A runa desperta se encostar em ferro ou aço.' },
+        { id: 'g_alilun', sub: 'Sensores Ambientais', nome: 'Alinhamento Lunar', desc: 'Só funciona à noite ou em uma fase da lua.' },
+        { id: 'g_altitu', sub: 'Sensores Ambientais', nome: 'Altitude', desc: 'Só ativa se estiver a mais de 10 metros de altura.' },
+        { id: 'g_barulh', sub: 'Sensores Ambientais', nome: 'Barulho Extremo', desc: 'Ativa sozinho se alguém gritar ou houver explosão.' },
+        { id: 'g_pressn', sub: 'Sensores Ambientais', nome: 'Presença Sangue', desc: 'Desperta se "farejar" sangue fresco no ar.' },
+        { id: 'g_saquep', sub: 'Combate e Reações Táticas', nome: 'Saque Rápido', desc: 'A arma liga seus poderes ao ser puxada da bainha.' },
+        { id: 'g_acertc', sub: 'Combate e Reações Táticas', nome: 'Acerto Crítico', desc: 'O efeito extra só acontece se o golpe for letal.' },
+        { id: 'g_defper', sub: 'Combate e Reações Táticas', nome: 'Defesa Perfeita', desc: 'Runa gasta magia só ao bloquear com sucesso.' },
+        { id: 'g_dordan', sub: 'Combate e Reações Táticas', nome: 'Dor/Dano', desc: 'O objeto liga sozinho no momento em que você toma dano.' },
+        { id: 'g_hommor', sub: 'Combate e Reações Táticas', nome: 'Homem-Morto', desc: 'Gatilho perigoso; só ativa se você cair inconsciente.' },
+        { id: 'g_desarm', sub: 'Combate e Reações Táticas', nome: 'Desarme', desc: 'Segurança; item dá choque se arrancado da sua mão.' },
+        { id: 'g_miratr', sub: 'Combate e Reações Táticas', nome: 'Mira Travada', desc: 'Ativa após apontar a arma para o alvo por 3 seg.' },
+        { id: 'g_deflex', sub: 'Combate e Reações Táticas', nome: 'Deflexão', desc: 'Poder desperta ao rebater projétil inimigo.' },
+        { id: 'g_blomov', sub: 'Combate e Reações Táticas', nome: 'Bloqueio de Mov.', desc: 'Ativa se você for paralisado, congelado ou amarrado.' },
+        { id: 'g_ultrec', sub: 'Combate e Reações Táticas', nome: 'Último Recurso', desc: 'O item só libera a magia se você tiver -10% de vida.' },
+        { id: 'g_atraso', sub: 'Tempo e Regras Especiais', nome: 'Atraso (Timer)', desc: 'Magia não sai na hora. Você define o delay.' },
+        { id: 'g_tmpdia', sub: 'Tempo e Regras Especiais', nome: 'Temporizador Diário', desc: 'Relógio mágico. Ativa sozinho todo dia ao meio-dia.' },
+        { id: 'g_ecomag', sub: 'Tempo e Regras Especiais', nome: 'Eco Mágico', desc: 'Desperta se alguém conjurar magia perto de você.' },
+        { id: 'g_absfei', sub: 'Tempo e Regras Especiais', nome: 'Absorção de Feitiço', desc: 'Engole magia recebida e altera seu próprio efeito.' },
+        { id: 'g_comtel', sub: 'Tempo e Regras Especiais', nome: 'Comando Mental', desc: 'Pode ativar o objeto a distância só de pensar.' },
+        { id: 'g_espelh', sub: 'Tempo e Regras Especiais', nome: 'Espelhamento', desc: 'Só ataca se o inimigo atacar primeiro (legítima defesa).' },
+        { id: 'g_limcar', sub: 'Tempo e Regras Especiais', nome: 'Limite de Cargas', desc: 'Ativa até 3 vezes perfeitamente. Depois, apaga.' },
+        { id: 'g_conesp', sub: 'Tempo e Regras Especiais', nome: 'Condição de Espécie', desc: 'Exige alvo específico (ex: flecha para morto-vivo).' },
+        { id: 'g_detmen', sub: 'Tempo e Regras Especiais', nome: 'Detecção de Mentira', desc: 'Liga/esquenta se a pessoa que segura mentir.' },
+        { id: 'g_roletr', sub: 'Tempo e Regras Especiais', nome: 'Roleta Russa', desc: 'Gatilho corrompido: 50% de chance de falhar.' }
     ],
     config: {
         periciasBase: [ 
@@ -137,19 +182,12 @@ const bdGrimorio = {
         },
         listaTreinamentosPadrao: ["Combate Corpo-a-Corpo", "Uso de Armas", "Meditação", "Personalizado"],
         ditCondicoes: {
-            "Abalado": "-2 em todos os testes",
-            "Apavorado": "-5 em todos os testes e não pode se aproximar da fonte",
-            "Exausto": "Metade do deslocamento e -5 em testes físicos",
-            "Doente": "-2 em todos os testes e não pode recuperar PV/PE naturalmente"
+            "Abalado": "-2 em testes", "Apavorado": "-5 em testes", "Exausto": "Metade do deslocamento"
         }
     }
 };
 
 export default function handler(req, res) {
-    // Trava de segurança (opcional durante testes, ligue para produção)
-    const origin = req.headers.origin || "";
-    // if (!origin.includes("seu-dominio.vercel.app")) return res.status(403).end();
-
     if (req.method === 'GET') {
         return res.status(200).json(bdGrimorio);
     }
