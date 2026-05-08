@@ -396,12 +396,12 @@ function inicializarPericias() {
   const container = document.getElementById('lista-pericias');
 
   if (!container) {
-    console.error("Container #lista-pericias não encontrado.");
+    console.error('Elemento #lista-pericias não encontrado');
     return;
   }
 
   if (!Array.isArray(periciasBase)) {
-    console.error("periciasBase inválido:", periciasBase);
+    console.error('periciasBase inválido:', periciasBase);
     return;
   }
 
@@ -410,6 +410,7 @@ function inicializarPericias() {
   periciasBase.forEach(p => {
     container.innerHTML += `
     <div class="flex items-center justify-between bg-slate-800 p-3 rounded-lg border border-slate-700 transition-colors shadow-sm hover:border-slate-500">
+
       <div class="flex items-center gap-1 w-5/12">
         <span class="text-sm font-semibold text-slate-200 truncate cursor-default" title="${p.nome}">
           ${p.nome}
@@ -456,6 +457,7 @@ function inicializarPericias() {
         >
           +0
         </span>
+
       </div>
     </div>`;
   });
