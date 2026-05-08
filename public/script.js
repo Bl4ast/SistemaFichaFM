@@ -393,12 +393,8 @@ function atualizarMagiaInutil(i, c, v) { magiasInuteis[i][c] = v; autoSalvar(); 
 
 // ─── PERÍCIAS ─────────────────────────────────────────────────
 function inicializarPericias() {
-  const container = document.getElementById('lista-pericias');
-  container.innerHTML = '';
-  if (!periciasBase || !Array.isArray(periciasBase)) {
-  console.error("periciasBase inválido:", periciasBase);
-  return;
-}
+  console.log("periciasBase:", periciasBase);
+
   periciasBase.forEach(p => {
     container.innerHTML += `
     <div class="flex items-center justify-between bg-slate-800 p-3 rounded-lg border border-slate-700 transition-colors shadow-sm hover:border-slate-500">
