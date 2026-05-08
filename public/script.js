@@ -393,23 +393,69 @@ function atualizarMagiaInutil(i, c, v) { magiasInuteis[i][c] = v; autoSalvar(); 
 
 // ─── PERÍCIAS ─────────────────────────────────────────────────
 function inicializarPericias() {
-  console.log("periciasBase:", periciasBase);
+  const container = document.getElementById('lista-pericias');
+
+  if (!container) {
+    console.error("Container #lista-pericias não encontrado.");
+    return;
+  }
+
+  if (!Array.isArray(periciasBase)) {
+    console.error("periciasBase inválido:", periciasBase);
+    return;
+  }
+
+  container.innerHTML = '';
 
   periciasBase.forEach(p => {
     container.innerHTML += `
     <div class="flex items-center justify-between bg-slate-800 p-3 rounded-lg border border-slate-700 transition-colors shadow-sm hover:border-slate-500">
       <div class="flex items-center gap-1 w-5/12">
-        <span class="text-sm font-semibold text-slate-200 truncate cursor-default" title="${p.nome}">${p.nome}</span>
-        <select id="attr-per-${p.id}" class="bg-slate-900/80 border border-slate-600 rounded text-xs font-bold text-slate-400 uppercase outline-none cursor-pointer p-1 ml-1 hover:border-cyan-400 hover:text-cyan-400 transition-colors" onchange="calcularDerivados()">
-          ${['for','des','con','int','sab','pre'].map(a => `<option value="${a}"${p.attr===a?' selected':''}>${a.toUpperCase()}</option>`).join('')}
+        <span class="text-sm font-semibold text-slate-200 truncate cursor-default" title="${p.nome}">
+          ${p.nome}
+        </span>
+
+        <select
+          id="attr-per-${p.id}"
+          class="bg-slate-900/80 border border-slate-600 rounded text-xs font-bold text-slate-400 uppercase outline-none cursor-pointer p-1 ml-1 hover:border-cyan-400 hover:text-cyan-400 transition-colors"
+          onchange="calcularDerivados()"
+        >
+          ${['for','des','con','int','sab','pre']
+            .map(a => `
+              <option value="${a}" ${p.attr === a ? 'selected' : ''}>
+                ${a.toUpperCase()}
+              </option>
+            `).join('')}
         </select>
       </div>
+
       <div class="flex items-center gap-2 w-7/12 justify-end">
-        <select id="grau-${p.id}" class="input-field bg-slate-900 border-slate-600 p-1.5 text-xs w-[85px] font-bold transition-colors" onchange="calcularDerivados()">
-          <option value="0">Destre.</option><option value="1">Treinado</option><option value="2">Especia.</option><option value="3">Maestria</option>
+
+        <select
+          id="grau-${p.id}"
+          class="input-field bg-slate-900 border-slate-600 p-1.5 text-xs w-[85px] font-bold transition-colors"
+          onchange="calcularDerivados()"
+        >
+          <option value="0">Destre.</option>
+          <option value="1">Treinado</option>
+          <option value="2">Especia.</option>
+          <option value="3">Maestria</option>
         </select>
-        <input type="number" id="per-${p.id}" class="input-field bg-slate-900 border-slate-600 w-10 p-1.5 text-center text-xs font-bold transition-colors" value="0" onchange="calcularDerivados()">
-        <span class="text-cyan-400 font-bold w-8 text-right text-base transition-colors" id="tot-${p.id}">+0</span>
+
+        <input
+          type="number"
+          id="per-${p.id}"
+          class="input-field bg-slate-900 border-slate-600 w-10 p-1.5 text-center text-xs font-bold transition-colors"
+          value="0"
+          onchange="calcularDerivados()"
+        >
+
+        <span
+          class="text-cyan-400 font-bold w-8 text-right text-base transition-colors"
+          id="tot-${p.id}"
+        >
+          +0
+        </span>
       </div>
     </div>`;
   });
