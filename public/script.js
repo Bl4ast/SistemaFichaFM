@@ -49,29 +49,45 @@ const periciasBase = [
 
 // --- COMUNICAÇÃO SEGURA COM O SERVIDOR ---
 async function carregarDadosDoServidor() {
+    console.log("Tentando conectar à API...");
     try {
+        // Tenta buscar os dados
         const response = await fetch('/api/grimorio');
-        if (!response.ok) throw new Error("Erro de comunicação com o backend seguro.");
-        const dadosSeguros = await response.json();
         
-        // Mapeia os dados protegidos para a memória do script
+        console.log("Status da Resposta:", response.status);
+        
+        if (!response.ok) {
+            throw new Error(`Erro HTTP! Status: ${response.status}`);
+        }
+
+        const dadosSeguros = await response.json();
+        console.log("Dados recebidos com sucesso:", dadosSeguros);
+
+        // Verifica se a estrutura dos dados está correta antes de atribuir
+        if (!dadosSeguros.config) {
+            throw new Error("A estrutura 'config' não foi encontrada no JSON.");
+        }
+
         bdGrimorio = {
-            essencias: dadosSeguros.essencias,
-            formas: dadosSeguros.formas,
-            modificadores: dadosSeguros.modificadores,
-            gatilhos: dadosSeguros.gatilhos
+            essencias: dadosSeguros.essencias || [],
+            formas: dadosSeguros.formas || [],
+            modificadores: dadosSeguros.modificadores || [],
+            gatilhos: dadosSeguros.gatilhos || []
         };
+        
         classesRPG = dadosSeguros.config.classesRPG;
         listaTreinamentosPadrao = dadosSeguros.config.listaTreinamentosPadrao;
         ditCondicoes = dadosSeguros.config.ditCondicoes;
 
-        // Renderiza e reconstrói as abas baseadas no banco de dados seguro
         renderizarGrimorioHTML();
         renderizarTreinamentos();
         renderizarCondicoes();
+        
+        console.log("Interface renderizada!");
+
     } catch (e) {
-        console.error("Incapaz de acessar a API segura:", e);
-        mostrarModal("Erro Crítico", "A conexão com o Grimório Arcano falhou por segurança.");
+        console.error("ERRO DETALHADO:", e.message);
+        mostrarModal("Erro Crítico", `Falha: ${e.message}`);
     }
 }
 
