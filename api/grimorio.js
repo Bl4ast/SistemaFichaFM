@@ -9,7 +9,7 @@ const ALLOWED_ORIGINS = [
   // Coloque aqui seu(s) domínio(s) autorizado(s)
   // Exemplo: "https://meu-site.vercel.app"
   // Deixe vazio para bloquear todas as origens não listadas
-  "https://feiticeiros-maldicoes.vercel.app",
+  "https://fichafm-b8e8xvn1f-bl4asts-projects.vercel.app/",
   "https://bl4ast.vercel.app",
 ];
 
