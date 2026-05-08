@@ -228,7 +228,7 @@ const ditCondicoes = {
   "Vulnerável":    "-2 Defesa.",
 };
 
-const periciasBase = [
+window.periciasBase = [
   { id: 'acrobacia',    nome: 'Acrobacia',    attr: 'des' },
   { id: 'adestramento', nome: 'Adestramento', attr: 'pre' },
   { id: 'artes',        nome: 'Artes',        attr: 'pre' },
